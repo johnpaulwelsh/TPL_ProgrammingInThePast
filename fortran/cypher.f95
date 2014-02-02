@@ -1,47 +1,52 @@
 !Caesar Cypher
 !Author: John Paul Welsh
+
+!codes are 65..90 for A..Z
+
 program cypher
 implicit none
 
 character :: input_string*15, output_string*15
-integer :: string_pos, shift_amt, shift_count
+integer :: string_pos, shift_amt
 
-input_string='JOHNPAULWELSH'
+input_string='JOHN PAUL WELSH'
 shift_amt=3
-output_string=' '
+output_string=''
 
-call encrypt(input_string, string_pos)
+call encrypt(input_string, string_pos, shift_amt)
+!return output_string and print it
 
 end program cypher
 
 !++++++++++++++++++++++++++++++
-subroutine encrypt(input_string, string_pos)
+subroutine encrypt(input_string, string_pos, shift_amt)
 implicit none
 
-character :: input_string*15
-integer :: string_pos
+character :: input_string*15, output_string*15, ch*1
+integer :: string_pos, code, shift_amt, shift_count
 
-!iterate through input_string
 do string_pos=1,15
 
-    print *, input_string(string_pos:string_pos)
+    ch=input_string(string_pos:string_pos)
+    code=iachar(ch)
+    
+    print *, 'Char = ', ch, ', code = ', code
 
+    !do not shift whitespace
+    if (code .NE. 32) then
+        do shift_count=1, shift_amt
+            code=code+1
+        end do
+    end if
+    
+    output_string(string_pos:string_pos)=achar(code)
+    
+    print *, 'After shift'
+    print *, 'Char = ', ch, ', code = ', code
+    print *
 end do
+
+print *, output_string
 
 end subroutine encrypt
 !++++++++++++++++++++++++++++++
-
-!===============
-!iterate through input_string
-do string_pos=1, *string length*
-!iachar(c) = get ASCII code "i" for the char "c"
-
-    !increment i "shift_amt" times
-    do shift_count=1,shift_amt
-        output_string(shift_count:shift_count) = input_string()
-    
-    
-    end do
-!achar(i) = get char "c" with the ASCII code "i"
-end do
-!===============
