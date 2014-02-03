@@ -3,6 +3,14 @@
 
 !codes are 65..90 for A..Z
 
+!if (code > 90) then
+!   code=65+MOD(code,90) 
+!end if
+
+!if (code < 65) then
+!    code=code-MOD(65,code)
+!end if
+
 program cypher
 implicit none
 
