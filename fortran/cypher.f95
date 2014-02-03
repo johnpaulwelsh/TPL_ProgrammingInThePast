@@ -3,14 +3,6 @@
 
 !codes are 65..90 for A..Z
 
-!if (code > 90) then
-!   code=65+MOD(code,90) 
-!end if
-
-!if (code < 65) then
-!    code=code-MOD(65,code)
-!end if
-
 program cypher
 implicit none
 
@@ -47,6 +39,12 @@ do string_pos=1,15
         do shift_count=1, shift_amt
             code=code+1
         end do
+        if (code > 90) then
+            code=65+MOD(code,90)
+        end if
+        if (code < 65) then
+            code=code-MOD(65,code)
+        end if
     end if
     
     output_string(string_pos:string_pos)=achar(code)
@@ -80,12 +78,21 @@ do string_pos=1,15
         do shift_count=1, shift_amt
             code=code-1
         end do
+        if (code > 90) then
+            code=65+MOD(code,90)
+        end if
+        if (code < 65) then
+            print *, 'Mod time... ', MOD(65,code)
+            code=91-MOD(65,code)
+            print *, 'New code is ', code
+            
+        end if
     end if
     
     output_string(string_pos:string_pos)=achar(code)
     
     print *, 'After decrypt shift'
-    print *, 'Char = ', ch, ', code = ', code
+    print *, 'Char = ', output_string(string_pos:string_pos), ', code = ', code
     print *
 end do
 
