@@ -2,17 +2,22 @@
 !Author: John Paul Welsh
 
 program cypher
-
 implicit none
 
 character :: input_string*15
 integer :: shift_amt, max_shift_value
 
 input_string='John Paul Welsh'
-shift_amt=12
+shift_amt=4
 max_shift_value=26
 
 print *, 'Original string is ',input_string
+print *, 'The shift amount for encrypt and decrypt is ',shift_amt
+print *, 'The max shift value for solve is ',max_shift_value
+
+if (shift_amt > 26) then
+    shift_amt=MOD(shift_amt,26)
+end if
 
 call capitalize(input_string)
 call encrypt(input_string, shift_amt)
@@ -56,15 +61,24 @@ do string_pos=1,15
     code=iachar(ch)
     
     if (code .NE. 32) then
-        do shift_count=1,shift_amt
-            code=code+1
-        end do
+        
+        if (shift_amt < 0) then
+            do shift_count=-1,shift_amt,-1
+                code=code-1
+            end do
+        else
+            do shift_count=1,shift_amt
+                code=code+1
+            end do
+        end if
+        
         if (code > 90) then
             code=64+MOD(code,90)
         end if
         if (code < 65) then
-            code=code-MOD(65,code)
+            code=91-MOD(65,code)
         end if
+        
     end if
     
     output_string(string_pos:string_pos)=achar(code)
@@ -88,15 +102,24 @@ do string_pos=1,15
     code=iachar(ch)
     
     if (code .NE. 32) then
-        do shift_count=1, shift_amt
-            code=code-1
-        end do
+    
+        if (shift_amt < 0) then
+            do shift_count=-1,shift_amt,-1
+                code=code+1
+            end do
+        else
+            do shift_count=1,shift_amt
+                code=code-1
+            end do
+        end if
+        
         if (code > 90) then
             code=64+MOD(code,90)
         end if
         if (code < 65) then
             code=91-MOD(65,code)           
         end if
+        
     end if
     
     output_string(string_pos:string_pos)=achar(code)
