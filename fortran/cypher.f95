@@ -8,17 +8,40 @@ implicit none
 character :: input_string*15
 integer :: shift_amt, max_shift_value
 
-input_string='JOHN PAUL WELSH'
+input_string='John Paul Welsh'
 shift_amt=12
 max_shift_value=26
 
+print *, 'Original string is ',input_string
+
+call capitalize(input_string)
 call encrypt(input_string, shift_amt)
-
 call decrypt(input_string, shift_amt)
-
 call solve(input_string, max_shift_value)
 
 end program cypher
+
+!++++++++++++++++++++++++++++++
+subroutine capitalize(input_string)
+implicit none
+
+character :: input_string*15, ch*1
+integer :: string_pos, code
+
+do string_pos=1,15
+    ch=input_string(string_pos:string_pos)
+    code=iachar(ch)
+    
+    if (code .NE. 32) then
+        if (code < 123 .AND. code > 96) then
+            code=code-32
+            input_string(string_pos:string_pos)=achar(code)
+        end if
+    end if
+end do
+
+end subroutine capitalize
+!++++++++++++++++++++++++++++++
 
 !++++++++++++++++++++++++++++++
 subroutine encrypt(input_string, shift_amt)
@@ -33,7 +56,7 @@ do string_pos=1,15
     code=iachar(ch)
     
     if (code .NE. 32) then
-        do shift_count=1, shift_amt
+        do shift_count=1,shift_amt
             code=code+1
         end do
         if (code > 90) then
