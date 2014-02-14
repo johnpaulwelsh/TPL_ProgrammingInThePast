@@ -18,20 +18,15 @@ Begin
         
         if not(ascii = 32) then
         Begin
-            if (shiftAmount < 0) then
-                For charCount := -1 DOWNTO shiftAmount do ascii := ascii - 1
-            else
-                For charCount := 1 to shiftAmount do ascii := ascii + 1;
-            if (ascii > 90) then
-                ascii := 64 + (ascii mod 90);
-            if (ascii < 65) then
-                ascii := 91 - (65 mod ascii);
+            ascii := ascii + shiftAmount;
+            if (ascii > 90) then ascii := 64 + (ascii mod 90);
+            if (ascii < 65) then ascii := 91 - (65 mod ascii);
         End;
         
         output := output + chr(ascii);
     End;
     
-    Writeln(output);
+    Writeln('Encrypt', output);
 End;
 {-------------------------------------------------------}
 
@@ -50,21 +45,15 @@ Begin
         
         if not(ascii = 32) then
         Begin
-            if (shiftAmount < 0) then
-                For charCount := -1 DOWNTO shiftAmount do ascii := ascii + 1
-            else
-                For charCount := 1 to shiftAmount do ascii := ascii - 1;
-        
-            if (ascii > 90) then
-                ascii := 64 + (ascii mod 90);
-            if (ascii < 65) then
-                ascii := 91 - (65 mod ascii);
+            ascii := ascii - shiftAmount;
+            if (ascii > 90) then ascii := 64 + (ascii mod 90);
+            if (ascii < 65) then ascii := 91 - (65 mod ascii);
         End;
         
         output := output + chr(ascii);
     End;
     
-    Writeln(output);
+    Writeln('Decrypt:', output);
 End;
 {-------------------------------------------------------}
 
@@ -86,12 +75,9 @@ Begin
             
             if not(ascii = 32) then
             Begin
-                For charCount := 1 to shiftAmount do ascii := ascii + 1;
-            
-                if (ascii > 90) then
-                    ascii := 64 + (ascii mod 90);
-                if (ascii < 65) then
-                    ascii := 91 - (65 mod ascii);
+                ascii := ascii + shiftAmount;
+                if (ascii > 90) then ascii := 64 + (ascii mod 90);
+                if (ascii < 65) then ascii := 91 - (65 mod ascii);
             End;
             
             output := output + chr(ascii);
