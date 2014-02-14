@@ -1,23 +1,21 @@
-!Caesar Cypher
+!Caesar Cypher - Fortran
 !Author: John Paul Welsh
 
 program cypher
 implicit none
 
 character :: input_string*15
-integer :: shift_amt, max_shift_value
+integer   :: shift_amt, max_shift_value
 
 input_string='John Paul Welsh'
-shift_amt=4
+shift_amt=27
 max_shift_value=26
 
 print *, 'Original string is ',input_string
 print *, 'The shift amount for encrypt and decrypt is ',shift_amt
 print *, 'The max shift value for solve is ',max_shift_value
 
-if (shift_amt > 26) then
-    shift_amt=MOD(shift_amt,26)
-end if
+shift_amt=MOD(shift_amt,26)
 
 call capitalize(input_string)
 call encrypt(input_string, shift_amt)
@@ -31,7 +29,7 @@ subroutine capitalize(input_string)
 implicit none
 
 character :: input_string*15, ch*1
-integer :: string_pos, code
+integer   :: string_pos, code
 
 do string_pos=1,15
     ch=input_string(string_pos:string_pos)
@@ -53,24 +51,14 @@ subroutine encrypt(input_string, shift_amt)
 implicit none
 
 character :: input_string*15, output_string*15, ch*1
-integer :: string_pos, code, shift_amt, shift_count
+integer   :: string_pos, code, shift_amt
 
 do string_pos=1,15
-
     ch=input_string(string_pos:string_pos)
     code=iachar(ch)
     
     if (code .NE. 32) then
-        
-        if (shift_amt < 0) then
-            do shift_count=-1,shift_amt,-1
-                code=code-1
-            end do
-        else
-            do shift_count=1,shift_amt
-                code=code+1
-            end do
-        end if
+        code=code+shift_amt
         
         if (code > 90) then
             code=64+MOD(code,90)
@@ -84,7 +72,7 @@ do string_pos=1,15
     output_string(string_pos:string_pos)=achar(code)
 end do
 
-print *, output_string
+print *, 'Encrypt: ',output_string
 
 end subroutine encrypt
 !++++++++++++++++++++++++++++++
@@ -94,24 +82,14 @@ subroutine decrypt(input_string, shift_amt)
 implicit none
 
 character :: input_string*15, output_string*15, ch*1
-integer :: string_pos, code, shift_amt, shift_count
+integer   :: string_pos, code, shift_amt
 
 do string_pos=1,15
-
     ch=input_string(string_pos:string_pos)
     code=iachar(ch)
     
     if (code .NE. 32) then
-    
-        if (shift_amt < 0) then
-            do shift_count=-1,shift_amt,-1
-                code=code+1
-            end do
-        else
-            do shift_count=1,shift_amt
-                code=code-1
-            end do
-        end if
+        code=code+shift_amt
         
         if (code > 90) then
             code=64+MOD(code,90)
@@ -125,7 +103,7 @@ do string_pos=1,15
     output_string(string_pos:string_pos)=achar(code)
 end do
 
-print *, output_string
+print *, 'Decrypt: ',output_string
 
 end subroutine decrypt
 !++++++++++++++++++++++++++++++
@@ -135,11 +113,9 @@ subroutine solve(input_string, max_shift_value)
 implicit none
 
 character :: input_string*15, output_string*15, ch*1
-integer :: string_pos, code, max_shift_value, shift_count, shift_amt
-integer :: iter_count
+integer   :: string_pos, code, max_shift_value, shift_amt, iter_count
 
 do iter_count=max_shift_value,0,-1
-
     shift_amt=iter_count
 
     do string_pos=1,15
@@ -148,9 +124,8 @@ do iter_count=max_shift_value,0,-1
         code=iachar(ch)
     
         if (code .NE. 32) then
-            do shift_count=1, shift_amt
-                code=code+1
-            end do
+            code=code+shift_amt
+            
             if (code > 90) then
                 code=64+MOD(code,90)
             end if
