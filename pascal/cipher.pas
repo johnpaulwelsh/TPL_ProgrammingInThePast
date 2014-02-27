@@ -100,8 +100,7 @@ Begin
     
     input := upcase(input);
     
-    if (shiftAmount > 26) then
-        shiftAmount := shiftAmount mod 26;
+    shiftAmount := shiftAmount mod 26;
     
     encrypt(input, shiftAmount);
     decrypt(input, shiftAmount);
