@@ -1,0 +1,32 @@
+Original string is John Paul Welsh
+ The shift amount for encrypt and decrypt is           27
+ The max shift value for solve is           26
+ Encrypt: KPIO QBVM XFMTI
+ Decrypt: KPIO QBVM XFMTI
+ Caesar           26 : JOHN PAUL WELSH
+ Caesar           25 : INGM OZTK VDKRG
+ Caesar           24 : HMFL NYSJ UCJQF
+ Caesar           23 : GLEK MXRI TBIPE
+ Caesar           22 : FKDJ LWQH SAHOD
+ Caesar           21 : EJCI KVPG RZGNC
+ Caesar           20 : DIBH JUOF QYFMB
+ Caesar           19 : CHAG ITNE PXELA
+ Caesar           18 : BGZF HSMD OWDKZ
+ Caesar           17 : AFYE GRLC NVCJY
+ Caesar           16 : ZEXD FQKB MUBIX
+ Caesar           15 : YDWC EPJA LTAHW
+ Caesar           14 : XCVB DOIZ KSZGV
+ Caesar           13 : WBUA CNHY JRYFU
+ Caesar           12 : VATZ BMGX IQXET
+ Caesar           11 : UZSY ALFW HPWDS
+ Caesar           10 : TYRX ZKEV GOVCR
+ Caesar            9 : SXQW YJDU FNUBQ
+ Caesar            8 : RWPV XICT EMTAP
+ Caesar            7 : QVOU WHBS DLSZO
+ Caesar            6 : PUNT VGAR CKRYN
+ Caesar            5 : OTMS UFZQ BJQXM
+ Caesar            4 : NSLR TEYP AIPWL
+ Caesar            3 : MRKQ SDXO ZHOVK
+ Caesar            2 : LQJP RCWN YGNUJ
+ Caesar            1 : KPIO QBVM XFMTI
+ Caesar            0 : JOHN PAUL WELSH

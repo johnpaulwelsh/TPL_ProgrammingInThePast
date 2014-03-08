@@ -1,3 +1,5 @@
+// Caesar Cipher - Scala (procedural)
+// Author: John Paul Welsh
 object Cipher {
     def encrypt(inputStr: String, shiftAmt: Int):String = {
         var outputStr = ""

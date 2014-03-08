@@ -1,4 +1,6 @@
-Program cypher;
+{Caesar Cipher - Pascal}
+{Author: John Paul Welsh}
+Program cipher;
 
 Var input : String;
 Var shiftAmount, maxShiftVal: Integer;
@@ -26,7 +28,7 @@ Begin
         output := output + chr(ascii);
     End;
     
-    Writeln('Encrypt', output);
+    Writeln('Encrypt: ', output);
 End;
 {-------------------------------------------------------}
 
@@ -53,7 +55,7 @@ Begin
         output := output + chr(ascii);
     End;
     
-    Writeln('Decrypt:', output);
+    Writeln('Decrypt: ', output);
 End;
 {-------------------------------------------------------}
 

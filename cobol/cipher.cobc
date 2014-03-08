@@ -1,20 +1,34 @@
-IDENTIFICATION DIVISION.
-PROGRAM-ID.     HELLOWORLD.
+000100 IDENTIFICATION DIVISION.
+000200 program-id.    cipher.
+000300 
+000400 ENVIRONMENT DIVISION.
+000500 
+000600 DATA DIVISION.
+000700 WORKING-STORAGE SECTION.
+000800
+000900 01  str-input       pic x(15) value "John Paul Welsh".
+001000 01  chr-shift       pic 99    value 04.
+001100 01  max-shift       pic 99    value 26.
+001200 01  encrypted       pic x(15).
+001300 01  decrypted       pic x(15).
+001300 01  chr-count       pic 99    value 0.
+001300 01  ascii-val       pic 999.
+001400 
+001500 PROCEDURE DIVISION.
+001600 
+001700 program-begin.
+001800*    this is a comment
+002200     display "The input string is " str-input
+002200     display "The shift amount is " chr-shift
+002300     display "The max shift amount is " max-shift
+002300 
+002300*    do not use periods after any sentences inside loops
+002300     perform 15 times
+002300         display chr-count
+002300*        increment the counter
+002300         add 1, chr-count giving chr-count
+002300     end-perform.
+002300     
+002400 program-done.
+002500     stop run.
 
-ENVIRONMENT DIVISION.
-CONFIGURATION SECTION.
-SOURCE-COMPUTER. RM-COBOL.
-OBJECT-COMPUTER. RM-COBOL.
-
-DATA DIVISION.
-FILE SECTION.
-
-PROCEDURE DIVISION.
-
-MAIN-LOGIC SECTION.
-BEGIN.
-    DISPLAY " " LINE 1 POSITION 1 ERASE EOS.
-    DISPLAY "Hello world!" LINE 15 POSITION 10.
-    STOP RUN.
-MAIN-LOGIC-EXIT.
-    EXIT.

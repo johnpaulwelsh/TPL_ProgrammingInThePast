@@ -1,7 +1,7 @@
-!Caesar Cypher - Fortran
+!Caesar Cipher - Fortran
 !Author: John Paul Welsh
 
-program cypher
+program cipher
 implicit none
 
 character :: input_string*15
@@ -22,7 +22,7 @@ call encrypt(input_string, shift_amt)
 call decrypt(input_string, shift_amt)
 call solve(input_string, max_shift_value)
 
-end program cypher
+end program cipher
 
 !++++++++++++++++++++++++++++++
 subroutine capitalize(input_string)
