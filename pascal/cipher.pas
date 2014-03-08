@@ -93,8 +93,8 @@ End;
 {-------------------------------------------------------}
 Begin
     input := 'John Paul Welsh';
-    shiftAmount := 30;
-    maxShiftVal := 26;
+    shiftAmount := 12;
+    maxShiftVal := 30;
     
     Writeln('The input string is ', input);
     Writeln('The shift amount for encrypt and decrypt is ', shiftAmount);

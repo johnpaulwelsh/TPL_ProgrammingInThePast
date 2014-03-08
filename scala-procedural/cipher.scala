@@ -48,8 +48,10 @@ object Cipher {
 
         for(iteration <- maxShiftVal to 0 by -1) {
             var outputStr = ""
-            shift = iteration
-            
+            // there were issues with maxShiftVal being > 26, so I just
+            // simplified the procedure be modding the current iteration
+            shift = iteration % 26
+
             for(chCount <- 0 until 15) {
                 newCh = inputStr.charAt(chCount)
                 newCode = newCh.asInstanceOf[Int]
@@ -67,8 +69,8 @@ object Cipher {
 
     def main(args: Array[String]) {
         var inputStr = "John Paul Welsh"
-        var shiftAmt = 1
-        var maxShiftVal = 26
+        var shiftAmt = -6
+        var maxShiftVal = 28
         
         inputStr = inputStr.toUpperCase()
 

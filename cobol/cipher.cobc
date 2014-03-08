@@ -1,34 +1,109 @@
-000100 IDENTIFICATION DIVISION.
-000200 program-id.    cipher.
-000300 
-000400 ENVIRONMENT DIVISION.
-000500 
-000600 DATA DIVISION.
-000700 WORKING-STORAGE SECTION.
-000800
-000900 01  str-input       pic x(15) value "John Paul Welsh".
-001000 01  chr-shift       pic 99    value 04.
-001100 01  max-shift       pic 99    value 26.
-001200 01  encrypted       pic x(15).
-001300 01  decrypted       pic x(15).
-001300 01  chr-count       pic 99    value 0.
-001300 01  ascii-val       pic 999.
-001400 
-001500 PROCEDURE DIVISION.
-001600 
-001700 program-begin.
-001800*    this is a comment
-002200     display "The input string is " str-input
-002200     display "The shift amount is " chr-shift
-002300     display "The max shift amount is " max-shift
-002300 
-002300*    do not use periods after any sentences inside loops
-002300     perform 15 times
-002300         display chr-count
-002300*        increment the counter
-002300         add 1, chr-count giving chr-count
-002300     end-perform.
-002300     
-002400 program-done.
-002500     stop run.
-
+000000*Caesar Cipher - COBOL
+000000*Author: John Paul Welsh
+000000 IDENTIFICATION DIVISION.
+000000 program-id.    cipher.
+000000 
+000000 ENVIRONMENT DIVISION.
+000000 
+000000 DATA DIVISION.
+000000 
+000000 WORKING-STORAGE SECTION.
+000000
+000000 01  str-input       PIC X(15) VALUE "John Paul Welsh".
+000000 01  curr-char       PIC X.
+000000 01  chr-shift       PIC 99    VALUE 04.
+000000 01  max-shift       PIC 99    VALUE 26.
+000000 01  encrypted       PIC X(15).
+000000 01  encrypt-output  PIC X(15).
+000000 01  decrypted       PIC X(15).
+000000 01  decrypt-output  PIC X.
+000000 01  this-char       PIC X.
+000000 01  this-index      PIC 99.
+000000 01  new-char        PIC X.
+000000 01  str-pos         PIC 99    VALUE 01.
+000000 01  new-index       PIC 99.
+000000 01  table-alpha.
+000000     05  idx-char-pair OCCURS 26 TIMES INDEXED BY idx.
+000000         10 table-idx    PIC 99.
+000000         10 table-val    PIC X.
+000000 
+000000 PROCEDURE DIVISION.
+000000 
+000000 PROGRAM-BEGIN.
+000000     MOVE "A" TO idx-char-pair(1).
+000000     MOVE "B" TO idx-char-pair(2).
+000000     MOVE "C" TO idx-char-pair(3).
+000000     MOVE "D" TO idx-char-pair(4).
+000000     MOVE "E" TO idx-char-pair(5).
+000000     MOVE "F" TO idx-char-pair(6).
+000000     MOVE "G" TO idx-char-pair(7).
+000000     MOVE "H" TO idx-char-pair(8).
+000000     MOVE "I" TO idx-char-pair(9).
+000000     MOVE "J" TO idx-char-pair(10).
+000000     MOVE "K" TO idx-char-pair(11).
+000000     MOVE "L" TO idx-char-pair(12).
+000000     MOVE "M" TO idx-char-pair(13).
+000000     MOVE "N" TO idx-char-pair(14).
+000000     MOVE "O" TO idx-char-pair(15).
+000000     MOVE "P" TO idx-char-pair(16).
+000000     MOVE "Q" TO idx-char-pair(17).
+000000     MOVE "R" TO idx-char-pair(18).
+000000     MOVE "S" TO idx-char-pair(19).
+000000     MOVE "T" TO idx-char-pair(20).
+000000     MOVE "U" TO idx-char-pair(21).
+000000     MOVE "V" TO idx-char-pair(22).
+000000     MOVE "W" TO idx-char-pair(23).
+000000     MOVE "X" TO idx-char-pair(24).
+000000     MOVE "Y" TO idx-char-pair(25).
+000000     MOVE "Z" TO idx-char-pair(26).
+000000*    do not use periods after any sentences inside loops
+000000 
+000000     DISPLAY "The input string is " str-input
+000000     DISPLAY "The shift amount is " chr-shift
+000000     DISPLAY "The max shift amount is " max-shift
+000000 
+000000*    capitalize the input
+000000     MOVE FUNCTION upper-case(str-input) TO str-input.
+000000 
+000000*    copy the input into the variable "encrypted"
+000000     MOVE str-input TO encrypted
+000000*    for the length of the input string...
+000000     PERFORM 15 TIMES
+000000*        get the current char out of "encrypted" and into its own var
+000000         MOVE encrypted(str-pos:str-pos) TO curr-char
+000000*        search the alphabet table for that character
+000000         PERFORM TABLE-SEARCH
+000000*        get the index for the shifted char
+000000         ADD this-index, chr-shift GIVING new-index
+000000 
+000000*        wrap around the alphabet if the new index is too large
+000000         IF new-index > 26 THEN
+000000             COMPUTE new-index = FUNCTION MOD(new-index, 26)
+000000         END-IF
+000000 
+000000*        wrap around the alphabet if the new index is too small
+000000         IF new-index < 0 THEN
+000000             COMPUTE new-index = new-index + 26
+000000         END-IF
+000000 
+000000*        get the shifted char and put it into its own var
+000000         MOVE idx-char-pair(new-index) TO new-char
+000000*        convert the unshifted char to the shifted one
+000000         INSPECT curr-char CONVERTING this-char TO new-char
+000000*        concatentate the newly shifted char to the output string
+000000         STRING encrypt-output curr-char INTO encrypt-output
+000000 
+000000*        increment the counter
+000000         ADD str-pos, 1 GIVING str-pos
+000000     END-PERFORM.
+000000     DISPLAY "encrypted: " encrypt-output.
+000000 
+000000 TABLE-SEARCH.
+000000     SET idx to 1.
+000000     SEARCH idx-char-pair
+000000     WHEN idx-char-pair(idx) = curr-char
+000000         MOVE idx-char-pair(idx) TO this-char
+000000         MOVE idx TO this-index.
+000000 
+000000 PROGRAM-DONE.
+000000     STOP RUN.

@@ -8,8 +8,8 @@ character :: input_string*15
 integer   :: shift_amt, max_shift_value
 
 input_string='John Paul Welsh'
-shift_amt=27
-max_shift_value=26
+shift_amt=-19
+max_shift_value=28
 
 print *, 'Original string is ',input_string
 print *, 'The shift amount for encrypt and decrypt is ',shift_amt
@@ -89,7 +89,7 @@ do string_pos=1,15
     code=iachar(ch)
     
     if (code .NE. 32) then
-        code=code+shift_amt
+        code=code-shift_amt
         
         if (code > 90) then
             code=64+MOD(code,90)

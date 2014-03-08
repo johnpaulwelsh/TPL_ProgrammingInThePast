@@ -1,8 +1,12 @@
 The input string is John Paul Welsh
-The shift amount for encrypt and decrypt is 30
-The maximum shift value for solve is 26
-Encrypt: NSLR TEYP AIPWL
-Decrypt: FKDJ LWQH SAHOD
+The shift amount for encrypt and decrypt is 12
+The maximum shift value for solve is 30
+Encrypt: VATZ BMGX IQXET
+Decrypt: XCVB DOIZ KSZGV
+Caesar 30: NSLR TEYP [IPWL
+Caesar 29: MRKQ SDXO ZHOVK
+Caesar 28: LQJP RCWN YGNUJ
+Caesar 27: KPIO QBVM XFMTI
 Caesar 26: JOHN PAUL WELSH
 Caesar 25: INGM OZTK VDKRG
 Caesar 24: HMFL NYSJ UCJQF
