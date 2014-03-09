@@ -5,12 +5,13 @@ object Cipher {
         var outputStr = ""
         var newCh = ' '
         var newCode = 0
+        var realShiftAmt = shiftAmt % 26
 
         for(chCount <- 0 until 15) {
             newCh = inputStr.charAt(chCount)
             newCode = newCh.asInstanceOf[Int]
             if (newCode != 32) {
-                newCode = newCode + shiftAmt
+                newCode = newCode + realShiftAmt
                 if (newCode > 90) newCode = 64 + (newCode % 90)
                 if (newCode < 65) newCode = 91 - (65 % newCode)
                 newCh = newCode.asInstanceOf[Char]
@@ -25,12 +26,13 @@ object Cipher {
         var outputStr = ""
         var newCh = ' '
         var newCode = 0
-
+        var realShiftAmt = shiftAmt % 26
+        
         for(chCount <- 0 until 15) {
             newCh = inputStr.charAt(chCount)
             newCode = newCh.asInstanceOf[Int]
             if (newCode != 32) {
-                newCode = newCode - shiftAmt
+                newCode = newCode - realShiftAmt
                 if (newCode > 90) newCode = 64 + (newCode % 90)
                 if (newCode < 65) newCode = 91 - (65 % newCode)
                 newCh = newCode.asInstanceOf[Char]
@@ -69,8 +71,8 @@ object Cipher {
 
     def main(args: Array[String]) {
         var inputStr = "John Paul Welsh"
-        var shiftAmt = -6
-        var maxShiftVal = 28
+        var shiftAmt = 30
+        var maxShiftVal = 15
         
         inputStr = inputStr.toUpperCase()
 

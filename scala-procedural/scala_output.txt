@@ -1,8 +1,7 @@
-The input string is JOHN PAUL WELSH
-The shift amount for encrypt and decrypt is -6
+The shift amount for encrypt and decrypt is -19
 The maximum shift value for solve is 28
-Encrypted: DIBH JUOF QYFMB
-Decrypted: PUNT VGAR CKRYN
+Encrypted: QVOU WHBS DLSZO
+Decrypted: CHAG ITNE PXELA
 Caesar 28: HMFL NYSJ UCJQF
 Caesar 27: INGM OZTK VDKRG
 Caesar 26: JOHN PAUL WELSH
@@ -32,4 +31,25 @@ Caesar 3: GLEK MXRI TBIPE
 Caesar 2: HMFL NYSJ UCJQF
 Caesar 1: INGM OZTK VDKRG
 Caesar 0: JOHN PAUL WELSH
-
+----------------------------------------------
+The input string is JOHN PAUL WELSH
+The shift amount for encrypt and decrypt is 30
+The maximum shift value for solve is 15
+Encrypted: NSLR TEYP AIPWL
+Decrypted: FKDJ LWQH SAHOD
+Caesar 15: UZSY ALFW HPWDS
+Caesar 14: VATZ BMGX IQXET
+Caesar 13: WBUA CNHY JRYFU
+Caesar 12: XCVB DOIZ KSZGV
+Caesar 11: YDWC EPJA LTAHW
+Caesar 10: ZEXD FQKB MUBIX
+Caesar 9: AFYE GRLC NVCJY
+Caesar 8: BGZF HSMD OWDKZ
+Caesar 7: CHAG ITNE PXELA
+Caesar 6: DIBH JUOF QYFMB
+Caesar 5: EJCI KVPG RZGNC
+Caesar 4: FKDJ LWQH SAHOD
+Caesar 3: GLEK MXRI TBIPE
+Caesar 2: HMFL NYSJ UCJQF
+Caesar 1: INGM OZTK VDKRG
+Caesar 0: JOHN PAUL WELSH

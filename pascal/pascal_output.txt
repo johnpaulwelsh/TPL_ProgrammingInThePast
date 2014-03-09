@@ -1,10 +1,8 @@
 The input string is John Paul Welsh
-The shift amount for encrypt and decrypt is 12
-The maximum shift value for solve is 30
-Encrypt: VATZ BMGX IQXET
-Decrypt: XCVB DOIZ KSZGV
-Caesar 30: NSLR TEYP [IPWL
-Caesar 29: MRKQ SDXO ZHOVK
+The shift amount for encrypt and decrypt is -19
+The maximum shift value for solve is 28
+Encrypt: QVOU WHBS DLSZO
+Decrypt: CHAG ITNE PXELA
 Caesar 28: LQJP RCWN YGNUJ
 Caesar 27: KPIO QBVM XFMTI
 Caesar 26: JOHN PAUL WELSH
@@ -18,6 +16,28 @@ Caesar 19: CHAG ITNE PXELA
 Caesar 18: BGZF HSMD OWDKZ
 Caesar 17: AFYE GRLC NVCJY
 Caesar 16: ZEXD FQKB MUBIX
+Caesar 15: YDWC EPJA LTAHW
+Caesar 14: XCVB DOIZ KSZGV
+Caesar 13: WBUA CNHY JRYFU
+Caesar 12: VATZ BMGX IQXET
+Caesar 11: UZSY ALFW HPWDS
+Caesar 10: TYRX ZKEV GOVCR
+Caesar 9: SXQW YJDU FNUBQ
+Caesar 8: RWPV XICT EMTAP
+Caesar 7: QVOU WHBS DLSZO
+Caesar 6: PUNT VGAR CKRYN
+Caesar 5: OTMS UFZQ BJQXM
+Caesar 4: NSLR TEYP AIPWL
+Caesar 3: MRKQ SDXO ZHOVK
+Caesar 2: LQJP RCWN YGNUJ
+Caesar 1: KPIO QBVM XFMTI
+Caesar 0: JOHN PAUL WELSH
+----------------------------------------------
+The input string is John Paul Welsh
+The shift amount for encrypt and decrypt is 32
+The maximum shift value for solve is 15
+Encrypt: PUNT VGAR CKRYN
+Decrypt: DIBH JUOF QYFMB
 Caesar 15: YDWC EPJA LTAHW
 Caesar 14: XCVB DOIZ KSZGV
 Caesar 13: WBUA CNHY JRYFU
